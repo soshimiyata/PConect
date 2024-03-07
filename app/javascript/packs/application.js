@@ -12,6 +12,8 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application"; 
+require("jquery")
+import "cocoon";
 
 Rails.start()
 Turbolinks.start()

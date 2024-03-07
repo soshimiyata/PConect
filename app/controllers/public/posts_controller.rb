@@ -4,6 +4,7 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @post_images = @post.post_images.build
   end
 
   def show
@@ -22,7 +23,6 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user_id = current_user.id
     if @post.save
       redirect_to post_path(@post), notice: "You have created post successfully."
     else
@@ -53,7 +53,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, images: [])
+    params.require(:post).permit(:title, post_images_attributes: [:id, :text, :_destroy, images: []])
   end
 
   # def ensure_correct_user
