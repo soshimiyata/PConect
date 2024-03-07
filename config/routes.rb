@@ -27,6 +27,9 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
+  devise_scope :admin do
+    get '/admin/sign_out' => 'devise/sessions#destroy'
+  end
   namespace :admin do
     root :to => 'homes#top'
     resources :users, only: [:index,:show,:edit,:update,:destroy]

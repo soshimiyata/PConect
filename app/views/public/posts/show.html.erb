@@ -1,0 +1,5 @@
+<h1><%= @post.title %></h1>
+<p><%= @post.body %></p>
+<% @post.images.each do |image| %>
+  <%= image_tag image, size: "200x200" %>
+<% end %>

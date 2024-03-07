@@ -2,18 +2,22 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
+  def new
+    @post = Post.new
+  end
+
   def show
     @post = Post.find(params[:id])
     @post_new = Post.new
     @post_comment = PostComment.new
-    unless
-    ReadCount.find_by(user_id: current_user.id, post_id: @post.id)
-    current_user.read_counts.create(post_id: @post.id)
-    end
+    # unless
+    # ReadCount.find_by(user_id: current_user.id, post_id: @post.id)
+    # current_user.read_counts.create(post_id: @post.id)
+    # end
   end
 
   def index
-    @post = Post.new
+    @posts = Post.all
   end
 
   def create
@@ -49,13 +53,13 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :body, image: [])
+    params.require(:post).permit(:title, :body, images: [])
   end
 
-  def ensure_correct_user
-    @post = Post.find(params[:id])
-    unless @post.user == current_user
-      redirect_to books_path
-    end
-  end
+  # def ensure_correct_user
+  #   @post = Post.find(params[:id])
+  #   unless @post.user == current_user
+  #     redirect_to books_path
+  #   end
+  # end
 end
