@@ -3,16 +3,13 @@
     <% if admin_signed_in? %>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <%= link_to "Items", admin_items_path, class: 'nav-link' %>
+          <%= link_to "Users", users_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
-          <%= link_to "Customers", admin_customers_path, class: 'nav-link' %>
+          <%= link_to "Posts", posts_path, class: 'nav-link' %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Admin", admin_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Genres", admin_genres_path, class: 'nav-link' %>
+        <li>
+        <%= link_to "Log out", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
         </li>
       </ul>
     <% elsif request.fullpath.include?("/admin") %>
