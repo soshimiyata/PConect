@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'homes/top'
+  end
   # 顧客用
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -31,7 +34,7 @@ Rails.application.routes.draw do
     get '/admin/sign_out' => 'devise/sessions#destroy'
   end
   namespace :admin do
-    root :to => 'homes#top'
+    root to: 'homes#top'
     resources :users, only: [:index,:show,:edit,:update,:destroy]
     resources :posts, only: [:index,:show,:destroy]
   end

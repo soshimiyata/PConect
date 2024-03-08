@@ -1,12 +1,6 @@
 <h1>Posts</h1>
 
 <% @posts.each do |post| %>
-  <div class="post">
-    <h2><%= post.title %></h2>
-    <% if post.images.attached? %>
-      <%= image_tag post.images.first, size: "200x200" %>
-    <% end %>
-    <p><%= truncate(post.body, length: 30) %></p>
-    <%= link_to 'Read more', post %>
-  </div>
+<%= post.title %>
+<%= link_to 'Read more', post_path(post) %>
 <% end %>

@@ -1,14 +1,16 @@
 <h1>New Post</h1>
 
-<%= form_with model: @post,method: :post, local: true do |f| %>
+<%= form_with model: @post, method: :post, local: true do |f| %>
   <div class="field">
     <%= f.label :title %></br>
     <%= f.text_field :title %>
   </div>
-
+  
+  <div class="field">
   <%= f.fields_for :post_images do |t| %>
   <%= render "post_image_fields", f: t %>
   <% end %>
   <%= link_to_add_association "追加", f, :post_images %>
   <%= f.submit %>
 <% end %>
+</div>
