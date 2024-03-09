@@ -1,0 +1,7 @@
+<h1>Posts</h1>
+
+<% posts.each do |post| %>
+<%= post.title %>
+<%= image_tag post.post_images.first.image, size: "200x200" %>
+<%= link_to 'Read more', post_path(post) %>
+<% end %>

@@ -1,5 +1,9 @@
-<h1><%= @post.title %></h1>
-<p><%= @post.body %></p>
-<% @post.images.each do |image| %>
-  <%= image_tag image, size: "200x200" %>
+<h1><%= @post.user.name %>さんの投稿</h1>
+<h3><%= @post.title %></h3>
+<% @post.post_images.each do |post_image| %>
+  <%= image_tag post_image.image, size: "200x200" %>
+  <%= post_image.text %>
 <% end %>
+  <% if @post.user == current_user %>
+  <%= link_to 'Edit', edit_post_path %>
+  <% end %>
