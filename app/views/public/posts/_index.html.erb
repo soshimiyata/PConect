@@ -2,6 +2,11 @@
 
 <% posts.each do |post| %>
 <%= post.title %>
+<%= post.user.name %>
 <%= image_tag post.post_images.first.image, size: "200x200" %>
+<% if admin_signed_in? %>
+<%= link_to 'Read me', admin_post_path(post) %>
+<% elsif user_signed_in? %>
 <%= link_to 'Read more', post_path(post) %>
+<% end %>
 <% end %>

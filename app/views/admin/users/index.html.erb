@@ -1,6 +1,5 @@
 <% @users.each do |user| %>
-<%= link_to user_path(user) do %>
 <tr><%= image_tag user.get_profile_image, size:'100x100' %></tr>
 <td><%= user.name %></td>
-<% end %>
+<%= link_to "show", admin_user_path(user) %>
 <% end %>

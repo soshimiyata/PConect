@@ -1,4 +1,4 @@
 <h1>投稿の編集</h1>
 <%= render 'form', post: @post %>
-<%= link_to 'Show', @book %> 
+<td><%= link_to 'Post_destroy', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
 <%= link_to 'Back', posts_path, class: "back" %>

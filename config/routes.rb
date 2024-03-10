@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
   namespace :admin do
+    get 'posts/index'
+    get 'posts/show'
+    get 'posts/edit'
+  end
+  namespace :admin do
+    get 'users/index'
+    get 'users/edit'
+  end
+  namespace :admin do
     get 'homes/top'
   end
   # 顧客用

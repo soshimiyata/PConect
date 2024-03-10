@@ -1,0 +1,11 @@
+<%= image_tag @user.get_profile_image, size:'100x100' %>
+<%= @user.name %>
+<%= @user.introduction %>
+<p>
+  <% if @user.is_active %>
+    アカウントは有効です
+  <% else %>
+    アカウントは無効です
+  <% end %>
+</p>
+<%= render 'public/posts/index', posts: @posts, user: @user %>
