@@ -4,12 +4,12 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
+    #postにネストしているpost_imageの定義
     @post_images = @post.post_images.build
   end
 
   def show
     @post = Post.find(params[:id])
-    @post_new = Post.new
     @post_comment = PostComment.new
     # unless
     # ReadCount.find_by(user_id: current_user.id, post_id: @post.id)
@@ -60,7 +60,7 @@ class Public::PostsController < ApplicationController
   def ensure_correct_user
     @post = Post.find(params[:id])
     unless @post.user == current_user
-      redirect_to books_path
+      redirect_to root_path
     end
   end
 end

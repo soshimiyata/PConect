@@ -1,12 +1,16 @@
 <h1>Posts</h1>
 
 <% posts.each do |post| %>
-<%= post.title %>
-<%= post.user.name %>
-<%= image_tag post.post_images.first.image, size: "200x200" %>
-<% if admin_signed_in? %>
-<%= link_to 'Read me', admin_post_path(post) %>
-<% elsif user_signed_in? %>
-<%= link_to 'Read more', post_path(post) %>
-<% end %>
+  <%= image_tag post.post_images.first.image, size: "200x200" %>
+  <%= post.title %>
+  <%= post.user.name %>
+  <%= render 'public/post_comments/counter', post: post %>
+  <span id="favorite_btn_<%= post.id %>">
+    <%= render "public/favorites/btn", post: post %>
+  </span>
+  <% if admin_signed_in? %>
+    <%= link_to 'Read me', admin_post_path(post) %>
+  <% elsif user_signed_in? %>
+    <%= link_to 'Read more', post_path(post) %>
+  <% end %>
 <% end %>

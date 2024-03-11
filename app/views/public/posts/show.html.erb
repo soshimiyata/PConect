@@ -7,3 +7,8 @@
   <% if @post.user == current_user %>
   <%= link_to 'Edit', edit_post_path %>
   <% end %>
+<span id="favorite_btn_<%= @post.id %>">
+  <%= render "public/favorites/btn", post: @post %>
+</span>
+  <%= render 'public/post_comments/index', post: @post %>
+  <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %>
