@@ -1,16 +1,28 @@
-<h1>Posts</h1>
-
-<% posts.each do |post| %>
-  <%= image_tag post.post_images.first.image, size: "200x200" %>
-  <%= post.title %>
-  <%= post.user.name %>
-  <%= render 'public/post_comments/counter', post: post %>
-  <span id="favorite_btn_<%= post.id %>">
-    <%= render "public/favorites/btn", post: post %>
-  </span>
-  <% if admin_signed_in? %>
-    <%= link_to 'Read me', admin_post_path(post) %>
-  <% elsif user_signed_in? %>
-    <%= link_to 'Read more', post_path(post) %>
-  <% end %>
-<% end %>
+<div class="container">
+  <h1 class="mt-4 mb-4">Posts</h1>
+  <div class="row">
+    <% posts.each do |post| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <%= image_tag post.post_images.first.image, size: "200x200", class: "card-img-top rounded" %>
+          <div class="card-body">
+            <h4 class="card-title"><%= post.title %></h4>
+            <div class="d-flex align-items-center mb-2">
+              <%= image_tag post.user.get_profile_image, size: '50x50', class: "rounded-circle mr-2" %>
+              <span><%= post.user.name %></span>
+            </div>
+            <%= render 'public/post_comments/counter', post: post %>
+            <% if admin_signed_in? %>
+              <%= link_to 'Read me', admin_post_path(post), class: "btn btn-primary btn-sm" %>
+            <% elsif user_signed_in? %>
+              <div id="favorite_btn_<%= post.id %>">
+                <%= render "public/favorites/btn", post: post %>
+              </div>
+              <%= link_to 'Read more', post_path(post), class: "btn btn-info btn-sm" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

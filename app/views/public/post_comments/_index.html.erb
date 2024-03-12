@@ -3,7 +3,7 @@
     <tr>
       <td>
         <%= link_to user_path(post_comment.user) do %>
-          <%= image_tag post_comment.user.get_profile_image, size: "50x50" %><br>
+          <%= image_tag post_comment.user.get_profile_image, size: "50x50" %>
           <%= post_comment.user.name %>
         <% end %>
       </td>
@@ -11,6 +11,9 @@
       <td>
         <% if post_comment.user == current_user %>
           <%= link_to "Destroy", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end", remote: true %>
+        <% end %>
+        <% if admin_signed_in? %>
+          <%= link_to "comment_destroy", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-sm btn-danger float-end", remote: true %>
         <% end %>
       </td>
     </tr>

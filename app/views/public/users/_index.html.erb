@@ -1,3 +1,14 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">プロフィール画像</th>
+      <th scope="col">ユーザー名</th>
+      <th scope="col">フォロー数</th>
+      <th scope="col">フォロワー数</th>
+      <th scope="col">アクション</th>
+      <th scope="col">詳細</th>
+    </tr>
+  </thead>
   <tbody>
     <% users.each do |user| %>
       <tr>
@@ -6,7 +17,8 @@
         <td>フォロー数: <%= user.followings.count %></td>
         <td>フォロワー数: <%= user.followers.count %></td>
         <td><%= render "public/relationships/btn", user: user, options: { class: "follow-link" } %></td>
-        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to '詳細', user %></td>
       </tr>
     <% end %>
   </tbody>
+</table>

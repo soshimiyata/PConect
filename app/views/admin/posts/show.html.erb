@@ -4,4 +4,8 @@
   <%= image_tag post_image.image, size: "200x200" %>
   <%= post_image.text %>
 <% end %>
+<div id="comment_index">
+<%= render 'public/post_comments/index', post: @post %>
+</div>
+</br>
 <%= link_to 'Post_destroy', admin_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
