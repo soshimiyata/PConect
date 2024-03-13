@@ -7,6 +7,11 @@
           <%= image_tag post.post_images.first.image, size: "200x200", class: "card-img-top rounded" %>
           <div class="card-body">
             <h4 class="card-title"><%= post.title %></h4>
+            <% if post.tags.present? %>
+              <i class="fas fa-tag">
+                <%= post.tags.map(&:name).join(', ') %>
+              </i>
+            <% end %>
             <div class="d-flex align-items-center mb-2">
               <%= image_tag post.user.get_profile_image, size: '50x50', class: "rounded-circle mr-2" %>
               <span><%= post.user.name %></span>

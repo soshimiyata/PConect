@@ -29,7 +29,12 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get "followings" => "relationships#followings", as: "followings"
       get "followers" => "relationships#followers", as: "followers"
+      #favoriteしたユーザーを判別
+      member do
+        get :favorites
+      end
     end
+    get "search_tag"=>"posts#search_tag"
     get '/search', to: 'searches#search'
     resources :messages, only: [:create]
     resources :rooms, only: [:create,:show]

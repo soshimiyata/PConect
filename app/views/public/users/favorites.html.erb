@@ -1,0 +1,18 @@
+<table class="table">
+  <tbody>
+    <% @favorite_posts.each do |post| %>
+      <tr>
+        <td>
+          <div class="d-flex align-items-center">
+            <%= link_to post_path(post) do %>
+              <%= image_tag post.post_images.first.image, size: "50x50", class: "img-thumbnail mr-2" %>
+            <% end %>
+            <div>
+              <%= link_to post.title, post_path(post), class: "text-decoration-none text-dark font-weight-bold" %>
+            </div>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
