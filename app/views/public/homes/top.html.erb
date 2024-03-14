@@ -8,13 +8,13 @@
         <div class="row mt-4">
           <ul class="slider">
             <% @new_posts.each do |post| %>
-            <li>
-              <%= link_to post_path(post) do %>
-                <p class="caption mx-2"><%= image_tag post.post_images.first.image, format: 'jpeg', size: '200x200' %></p>
-              <% end %>
-            <p class="caption"><%= post.title %></p>
-            </li>
-        <% end %>
+              <li>
+                <%= link_to post_path(post) do %>
+                  <p class="caption mx-2"><%= image_tag post.post_images.first.image, format: 'jpeg', size: '200x200' %></p>
+                <% end %>
+                <p class="caption"><%= post.title %></p>
+              </li>
+            <% end %>
           </ul>
         </div>
       </div>
