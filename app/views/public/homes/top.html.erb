@@ -1,3 +1,24 @@
 <h1>PConect</h1>
 <h2>みんなの新着投稿</h2>
+<div class="container mt-5" id="container">
+  <div class="row">
+    <div class="col">
+      <div class="mt-5">
+        <h3><strong>新着商品</strong></h3>
+        <div class="row mt-4">
+          <ul class="slider">
+            <% @new_posts.each do |post| %>
+            <li>
+              <%= link_to post_path(post) do %>
+                <p class="caption mx-2"><%= image_tag post.post_images.first.image, format: 'jpeg', size: '200x200' %></p>
+              <% end %>
+            <p class="caption"><%= post.title %></p>
+            </li>
+        <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <%= render 'public/posts/index',posts: @posts %>

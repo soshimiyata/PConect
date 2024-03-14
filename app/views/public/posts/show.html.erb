@@ -26,6 +26,7 @@
           <%= render "public/favorites/btn", post: @post %>
         </span>
       </div>
+      <td><i class="fa-solid fa-magnifying-glass-chart"></i><%= @post.read_counts.count %></td>
       <div class="mt-3">
         <span id="comment_counter">
           <%= render "public/post_comments/counter", post: @post %>

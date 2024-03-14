@@ -12,10 +12,10 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
     @post_tags = @post.tags
-    # unless
-    # ReadCount.find_by(user_id: current_user.id, post_id: @post.id)
-    # current_user.read_counts.create(post_id: @post.id)
-    # end
+     unless
+     ReadCount.find_by(user_id: current_user.id, post_id: @post.id)
+     current_user.read_counts.create(post_id: @post.id)
+     end
   end
 
   def index
