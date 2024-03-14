@@ -2,7 +2,6 @@
 
 /* 新着商品スライドショー */
 .slider {
-  background-color: red;
   width: 94%;
   margin: 0 auto; /* スライドショーを水平方向に中央に配置 */
 }
@@ -18,16 +17,15 @@
   opacity: 0.5; /* スライドの透明度を0.5に設定 */
 }
 
-.slider .slick-slide.slick-center {//こいつが犯人
-  transform: scale(1);　/* 中央にきたメインスライドが通常サイズに拡大 */
+.slider .slick-slide.slick-center {
+  transform: scale(1); /* 中央にきたメインスライドが通常サイズに拡大 */
   opacity: 1; /* スライドの透明度を1に設定し透明じゃなくする */
 }
-
 
 /* 新着商品リスト装飾 */
 /* 各スライドの背景色を設定し、余白と角丸を追加して装飾する */
 .slider li {
-  background-color: #FFE3E1;
+  background-color: #C0C0C0;
   padding: 10px; /* スライドの内側の余白を追加 */
   border-radius: 10px; /* スライドの角を丸くします */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* スライドに影を追加して立体感を出す */
@@ -43,7 +41,7 @@
 .slider li p.caption {
   font-family: 'Sawarabi Mincho', sans-serif;
   font-size: 16px;
-  color: #FF1493;
+  color: #0000FF;
   font-weight: bold;
 }
 
@@ -91,11 +89,11 @@
   height: 12px;
   display: block;
   border-radius: 50%;
-  background: #FFC0CB; /* ドットの背景色を薄いピンクに設定 */
+  background: #C0C0C0; /* ドットの背景色を薄いピンクに設定 */
   border: none;
 }
 
 /* アクティブなドットのスタイルを設定 */
 .slick-dots .slick-active button {
-  background: #FF1493; /* アクティブなドットの背景色を濃いピンクに設定 */
+  background: #0000FF; /* アクティブなドットの背景色を濃いピンクに設定 */
 }
