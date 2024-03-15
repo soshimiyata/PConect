@@ -36,6 +36,7 @@ Rails.application.routes.draw do
     end
     get "search_tag"=>"posts#search_tag"
     get '/search', to: 'searches#search'
+    resources :notifications, only: [:index]
     resources :messages, only: [:create]
     resources :rooms, only: [:create,:show]
   end

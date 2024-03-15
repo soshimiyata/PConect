@@ -38,6 +38,16 @@
           <li class="nav-item">
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
         </li>
+        <li>
+          <div class="notification-icon">
+          <%= link_to notifications_path do %>
+            <i class="fa fa-bell mr-4"></i> <!-- ベルのアイコン -->
+              <% if unchecked_notifications.any? %>
+                <span class="notification-mark"></span> <!-- 未読マーク -->
+              <% end %>
+            <% end %>
+          </div>
+        </li>
       </ul>
     <% else %>
       <ul class="navbar-nav ml-auto">

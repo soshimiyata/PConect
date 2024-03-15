@@ -2,12 +2,17 @@ class Public::PostCommentsController < ApplicationController
 
 def create
   @post = Post.find(params[:post_id])
-  comment = current_user.post_comments.new(post_comment_params)
-  comment.post_id = @post.id
-  comment.save
-  @post_comment = PostComment.new
-  # redirect_to request.referer
+  @post_comment = PostComment.new(post_comment_params)
+  @post_comment.user = current_user
+  @post_comment.post = @post
+  if @post_comment.save
+    @post.create_notification_post_comment!(current_user, @post_comment.id)
+    flash[:success] = "Comment created successfully"
+  else
+    flash[:error] = "Failed to create comment"
+  end
 end
+
 
 def show
   @post = Post.find(params[:id])

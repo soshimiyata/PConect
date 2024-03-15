@@ -1,0 +1,57 @@
+<!--通知に関連する2人のユーザー（通知を行ったユーザーと通知されるユーザー）を取得-->
+<% visitor = notification.visitor %>
+<% visited = notification.visited %>
+<div class="col-md-6 mx-auto">
+  <div class="form-inline">
+   <span>
+     <!--ユーザー情報を表示しない通知-->
+    <% if !%w[reply post_updated post_destroyed].include?(notification.action) %>  
+      
+    <% show_user_info = true %> <!-- 最初はユーザー情報を表示するとして変数を初期化 -->
+      <!-- いいね通知の場合 -->
+      <% if notification.action == 'like' && !notification.post %>
+        <span class="text-red">
+          <%= "該当する投稿が削除されています" %>
+        </span> 
+        <% show_user_info = false %> <!-- ユーザー情報を表示しないように変数を設定 -->
+      <% end %>
+    <% end %>
+
+<!-- 上記でユーザー情報を表示すると判断された場合のみ表示 -->
+    <% if show_user_info %>
+      <%= link_to user_path(visitor) do %>
+          <% if visitor&.profile_image&.attached? %>
+            <%= image_tag visitor.icon_image, class: 'img-fluid profile-icon' %>
+          <% end %>
+          <strong><%= visitor.name %></strong>
+      <% end %>
+      <%= 'が' %>
+    <% end %>
+
+ <!--いいね通知の場合-->
+    <% case notification.action %>
+    <% when 'like' %>
+      <% if notification.post %>
+        <%= link_to "あなたの投稿: #{notification.post.title}", notification.post, style: "font-weight: bold;" %>
+        に<i class="fas fa-heart" style="color: red; margin-left: 5px;"></i><%= "いいねしました" %>
+      <% end %>
+    <% end %>
+    
+    <!--コメント通知の場合-->
+    <% case notification.action %>
+    <% when 'comment' %>
+      <% if notification.post %>
+        <%= link_to "あなたの投稿: #{notification.post.title}", notification.post, style: "font-weight: bold;" %>
+        にコメントが追加されました
+      <% end %>
+    <% end %>
+    <!--フォロー通知の場合-->
+    <% case notification.action %>
+    <% when 'follow' %>
+      <% if notification.visited %>
+        <%= link_to "#{notification.visited.name}", user_path(notification.visited), style: "font-weight: bold;" %>
+        をフォローしました
+      <% end %>
+    <% end %>
+  </div>
+</div>
