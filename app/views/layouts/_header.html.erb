@@ -21,7 +21,7 @@
     <% elsif user_signed_in? %>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <%= link_to "Home", root_path, class: 'nav-link' %>
+          <%= link_to "Home", root_path, class: 'nav-link' ,data: {"turbolinks"=>false} %>
         </li>
         <li class="nav-item">
           <%= link_to "Users", users_path, class: 'nav-link' %>
@@ -44,6 +44,8 @@
             <i class="fa fa-bell mr-4"></i> <!-- ベルのアイコン -->
               <% if unchecked_notifications.any? %>
                 <span class="notification-mark"></span> <!-- 未読マーク -->
+                <% else %>
+                <i class="fa fa-bell mr-4"></i>
               <% end %>
             <% end %>
           </div>
@@ -52,7 +54,7 @@
     <% else %>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <%= link_to "Home", root_path, class: 'nav-link' %>
+          <%= link_to "Home", root_path, class: 'nav-link',data: {"turbolinks"=>false} %>
         </li>
         <li class="nav-item">
           <%= link_to "Sign up", new_user_registration_path, class: 'nav-link' %>

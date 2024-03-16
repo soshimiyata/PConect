@@ -3,7 +3,7 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show, :edit]
 
   def index
-    @users = User.all
+    @users = User.page(params[:page]).per(10)
   end
 
   def show

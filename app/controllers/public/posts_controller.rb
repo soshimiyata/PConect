@@ -19,7 +19,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(9).order('updated_at DESC')
     @tag_list=Tag.all
   end
 

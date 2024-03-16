@@ -3,3 +3,4 @@
 <td><%= user.name %></td>
 <%= link_to "show", admin_user_path(user) %>
 <% end %>
+<%= paginate @users %>
