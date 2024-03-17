@@ -1,11 +1,17 @@
-<h1><%= @post.user.name %>さんの投稿</h1>
-<h3><%= @post.title %></h3>
-<% @post.post_images.each do |post_image| %>
-  <%= image_tag post_image.image, size: "200x200" %>
-  <%= post_image.text %>
-<% end %>
-<div id="comment_index">
-<%= render 'public/post_comments/index', post: @post %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <h1><%= @post.user.name %> さんの投稿</h1>
+      <h3><%= @post.title %></h3>
+      <% @post.post_images.each do |post_image| %>
+        <%= image_tag post_image.image, size: "200x200", class: "img-fluid mb-3" %>
+        <p><%= post_image.text %></p>
+      <% end %>
+      <div id="comment_index">
+        <%= render 'public/post_comments/index', post: @post %>
+      </div>
+      <br>
+      <%= link_to '投稿を削除する', admin_post_path(@post), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-sm btn-danger" %>
+    </div>
+  </div>
 </div>
-</br>
-<%= link_to 'Post_destroy', admin_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>

@@ -1,12 +1,11 @@
 <div class="nested-fields">
   <div class="card">
     <div class="card-body">
-      <%= f.label :image %><br>
+      <%= f.label :image, "画像" %><br>
       <%= f.file_field :image, class: "form-control-file" %>
     </div>
     <div class="card-body">
-      <%= f.label :text %><br>
-      <%= f.text_area :text, class: "form-control" %>
+      <%= f.text_area :text, class: "form-control", placeholder: "写真について入力してください" %>
     </div>
     <div class="card-footer text-right">
       <%= link_to_remove_association "削除", f, class: "btn btn-outline-danger" %>

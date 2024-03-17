@@ -5,7 +5,7 @@
   <i class="fas fa-tag mr-2"></i>
   <% @tag_list.each do |list| %>
     <span class="badge badge-primary mr-2 mb-2">
-      <%= link_to list.name,search_tag_path(tag_id: list.id) %> (<%= list.posts.count %>)
+      <%= link_to list.name, search_tag_path(tag_id: list.id), style: "color: white;" %> (<%= list.posts.count %>)
     </span>
   <% end %>
 </div>

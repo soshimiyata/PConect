@@ -1,7 +1,0 @@
-<%= image_tag @user.get_profile_image, size:'100x100' %>
-<%= @user.name %>
-<%= @user.introduction %>
-<%= form_with model: @user,url: admin_user_path(@user), method: :patch, local: true do |f| %>
-<%= f.select :is_active, [['有効', true], ['退会済み', false]], {}, { class: 'form-control' } %>
-<%= f.submit %>
-<% end %>
