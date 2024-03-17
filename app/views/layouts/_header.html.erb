@@ -1,5 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 70px;"> <!-- ヘッダーの高さを70pxに設定 -->
   <div class="container">
+    <h1><%= link_to "PConect", root_path, style: 'color: white;', data: { "turbolinks" => false } %></h1>
     <% if admin_signed_in? %>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
@@ -9,7 +10,7 @@
           <%= link_to "Posts", admin_posts_path, class: 'nav-link' %>
         </li>
         <li>
-        <%= link_to "Log out", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
+          <%= link_to "Log out", destroy_admin_session_path, method: :delete, class: 'nav-link' %>
         </li>
       </ul>
     <% elsif request.fullpath.include?("/admin") %>
@@ -21,7 +22,7 @@
     <% elsif user_signed_in? %>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <%= link_to "Home", root_path, class: 'nav-link' ,data: {"turbolinks"=>false} %>
+          <%= link_to "Home", root_path, class: 'nav-link', data: { "turbolinks" => false } %>
         </li>
         <li class="nav-item">
           <%= link_to "Users", users_path, class: 'nav-link' %>
@@ -29,23 +30,22 @@
         <li class="nav-item">
           <%= link_to "Posts", posts_path, class: 'nav-link' %>
         </li>
-        <li>
+        <li class="nav-item">
           <%= link_to "New Post", new_post_path, class: 'nav-link' %>
         </li>
         <li class="nav-item">
           <%= link_to "Your favorites", favorites_user_path(current_user), class: 'nav-link' %>
         </li>
-          <li class="nav-item">
+        <li class="nav-item">
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
         </li>
-        <li>
-          <div class="notification-icon">
-          <%= link_to notifications_path do %>
-            <i class="fa fa-bell mr-4"></i> <!-- ベルのアイコン -->
+        <li class="nav-item" style="margin-left: 20px;"> <!-- 感覚を開けるためのスタイルを追加 -->
+          <div class="notification-icon d-flex align-items-center justify-content-center"> <!-- 中央揃えのためのスタイルを追加 -->
+            <%= link_to notifications_path do %>
               <% if unchecked_notifications.any? %>
-                <span class="notification-mark"></span> <!-- 未読マーク -->
-                <% else %>
-                <i class="fa fa-bell mr-4"></i>
+                <i class="fas fa-bell fa-2x" style="color: yellow;"></i><!-- 未読マーク -->
+              <% else %>
+                <i class="fas fa-bell fa-2x" style="color: white;"></i> <!-- 既読マーク -->
               <% end %>
             <% end %>
           </div>
@@ -54,7 +54,7 @@
     <% else %>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <%= link_to "Home", root_path, class: 'nav-link',data: {"turbolinks"=>false} %>
+          <%= link_to "Home", root_path, class: 'nav-link', data: { "turbolinks" => false } %>
         </li>
         <li class="nav-item">
           <%= link_to "Sign up", new_user_registration_path, class: 'nav-link' %>

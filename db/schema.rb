@@ -125,7 +125,6 @@ ActiveRecord::Schema.define(version: 2024_03_15_043904) do
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "category_id"
     t.string "title", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
