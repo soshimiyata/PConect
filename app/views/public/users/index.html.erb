@@ -1,25 +1,3 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">プロフィール画像</th>
-      <th scope="col">ユーザー名</th>
-      <th scope="col">フォロー数</th>
-      <th scope="col">フォロワー数</th>
-      <th scope="col">フォロー / アンフォローボタン</th>
-      <th scope="col">詳細</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to user_path(user) do %><%= image_tag user.get_profile_image, size: '100x100' %><% end %></td>
-        <td><%= user.name %></td>
-        <td>フォロー数: <%= user.followings.count %></td>
-        <td>フォロワー数: <%= user.followers.count %></td>
-        <td><%= render "public/relationships/btn", user: user, options: { class: "follow-link" } %></td>
-        <td><%= link_to '詳細', user %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+<%= render "public/users/index", users: @users %>
 <%= paginate @users %>

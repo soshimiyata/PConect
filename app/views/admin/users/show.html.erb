@@ -1,11 +1,25 @@
-<%= image_tag @user.get_profile_image, size:'100x100' %>
-<%= @user.name %>
-<%= @user.introduction %>
-<p>
-  <% if @user.is_active %>
-    アカウントは有効です
-  <% else %>
-    アカウントは無効です
-  <% end %>
-</p>
-<%= render 'public/posts/index', posts: @posts, user: @user %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card mb-4">
+        <div class="card-body">
+          <%= image_tag @user.get_profile_image, size: '100x100' %>
+          <h1><%= @user.name %></h1>
+          <p><%= @user.introduction %></p>
+          <p>
+            <% if @user.is_active %>
+              アカウントは有効です
+            <% else %>
+              アカウントは無効です
+            <% end %>
+          </p>
+          <%= form_with model: @user, url: admin_user_path(@user), method: :patch, local: true do |f| %>
+            <%= f.select :is_active, [['有効', true], ['退会済み', false]], {}, { class: 'form-control' } %>
+            <%= f.submit "編集する" %>
+          <% end %>
+        </div>
+      </div>
+      <%= render 'public/posts/index', posts: @posts, user: @user %>
+    </div>
+  </div>
+</div>

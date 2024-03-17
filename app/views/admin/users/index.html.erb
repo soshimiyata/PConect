@@ -1,6 +1,2 @@
-<% @users.each do |user| %>
-<tr><%= image_tag user.get_profile_image, size:'100x100' %></tr>
-<td><%= user.name %></td>
-<%= link_to "show", admin_user_path(user) %>
-<% end %>
+<%= render "public/users/index", users: @users %>
 <%= paginate @users %>

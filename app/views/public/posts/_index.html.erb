@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="mt-4 mb-4">Posts</h1>
+  <h1 class="mt-4 mb-4">投稿一覧</h1>
   <div class="row">
     <% posts.each do |post| %>
       <div class="col-md-4 mb-4">
@@ -20,6 +20,10 @@
               <span><%= render 'public/post_comments/counter', post: post %></span>
               <span><i class="fa-solid fa-magnifying-glass-chart"></i><%= post.read_counts.count %></span>
               <% if admin_signed_in? %>
+                <span>
+                  <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+                  <%= post.favorites.count %>
+                </span>
                 <%= link_to 'Read me', admin_post_path(post), class: "btn btn-primary btn-sm" %>
               <% elsif user_signed_in? %>
                 <div id="favorite_btn_<%= post.id %>">
@@ -27,8 +31,10 @@
                 </div>
                 <%= link_to 'Read more', post_path(post), class: "btn btn-info btn-sm" %>
               <% else %>
-                <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
-                <%= post.favorites.count %>
+                <span>
+                  <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
+                  <%= post.favorites.count %>
+                </span>
               <% end %>
             </div>
           </div>

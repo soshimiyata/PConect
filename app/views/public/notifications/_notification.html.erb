@@ -3,7 +3,6 @@
 <% visited = notification.visited %>
 <div class="col-md-6 mx-auto">
   <div class="form-inline">
-   <span>
      <!--ユーザー情報を表示しない通知-->
     <% if !%w[reply post_updated post_destroyed].include?(notification.action) %>  
       
