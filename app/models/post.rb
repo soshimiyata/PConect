@@ -11,6 +11,7 @@ class Post < ApplicationRecord
 
 
   validates :title, presence: true
+  validates :post_images, presence: true
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)

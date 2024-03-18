@@ -7,9 +7,9 @@ def create
   @post_comment.post = @post
   if @post_comment.save
     @post.create_notification_post_comment!(current_user, @post_comment.id)
-    flash[:success] = "Comment created successfully"
+    flash[:success] = "コメントできました!"
   else
-    flash[:error] = "Failed to create comment"
+    flash[:error] = "コメントが失敗しました..."
   end
 end
 

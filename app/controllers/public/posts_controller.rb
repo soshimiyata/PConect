@@ -30,9 +30,9 @@ class Public::PostsController < ApplicationController
     tag_list = params[:post][:name].split(',')
     if @post.save
       @post.save_tag(tag_list)
-      redirect_to post_path(@post), notice: "You have created post successfully."
+      redirect_to post_path(@post), notice: "投稿に成功しました!"
     else
-      flash.now[:notice] = "your post is failed."
+      flash.now[:notice] = "投稿に失敗しました..."
       render 'new'
     end
   end
@@ -47,9 +47,9 @@ class Public::PostsController < ApplicationController
     tag_list=params[:post][:name].split(',')
     if @post.update(post_params)
       @post.save_tag(tag_list)
-      redirect_to post_path(@post), notice: "You have updated post successfully."
+      redirect_to post_path(@post), notice: "投稿の編集に成功しました!"
     else
-      flash.now[:notice] = "you have update failed."
+      flash.now[:notice] = "投稿の編集に失敗しました..."
       render "edit" 
     end
   end
@@ -57,7 +57,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path, notice: "success destroy post!"
+    redirect_to posts_path, notice: "投稿が削除できました!"
   end
 
   def search_tag
