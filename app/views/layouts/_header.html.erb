@@ -1,59 +1,114 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 70px;"> <!-- ヘッダーの高さを70pxに設定 -->
   <div class="container">
+    <% if user_signed_in? %>
+    <h1><i class="fa-solid fa-desktop text-white"></i><%= link_to "PConect", root_path, style: 'color: white;', data: { "turbolinks" => false } %></h1>
+    <% elsif request.fullpath.include?("/admin") %>
+    <% else %>
+    <h1><i class="fa-solid fa-desktop text-white"></i><%= link_to "PConect", root_path, style: 'color: white;', data: { "turbolinks" => false } %></h1>
+    <% end %>
+
     <% if admin_signed_in? %>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <%= link_to "Items", admin_items_path, class: 'nav-link' %>
+          <%= link_to admin_users_path, class: 'nav-link' do %>
+            <i class="fas fa-users text-white"></i> <!-- Users アイコン -->
+            Users
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "Customers", admin_customers_path, class: 'nav-link' %>
+          <%= link_to admin_posts_path, class: 'nav-link' do %>
+            <i class="fas fa-file-alt text-white"></i> <!-- Posts アイコン -->
+            Posts
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "Admin", admin_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Genres", admin_genres_path, class: 'nav-link' %>
+          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link', data: { "turbolinks" => false } do %>
+            <i class="fas fa-sign-out-alt text-white"></i> <!-- Log out アイコン -->
+            Log out
+          <% end %>
         </li>
       </ul>
     <% elsif request.fullpath.include?("/admin") %>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <%= link_to "About", about_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Items", admin_items_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Sign up", new_admin_registration_path, class: 'nav-link' %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "Log in", new_admin_session_path, class: 'nav-link' %>
+          <%= link_to new_admin_session_path, class: 'nav-link' do %>
+            <i class="fas fa-sign-in-alt text-white"></i> <!-- Log in アイコン -->
+            Log in
+          <% end %>
         </li>
       </ul>
     <% elsif user_signed_in? %>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <%= link_to "Users", users_path, class: 'nav-link' %>
+          <%= link_to root_path, class: 'nav-link', data: { "turbolinks" => false } do %>
+            <i class="fas fa-home text-white"></i> <!-- Home アイコン -->
+            Home
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "Posts", posts_path, class: 'nav-link' %>
+          <%= link_to users_path, class: 'nav-link' do %>
+            <i class="fas fa-users text-white"></i> <!-- Users アイコン -->
+            Users
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link' %>
+          <%= link_to posts_path, class: 'nav-link' do %>
+            <i class="fas fa-file-alt text-white"></i> <!-- Posts アイコン -->
+            Posts
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to new_post_path, class: 'nav-link' do %>
+            <i class="fas fa-plus-circle text-white"></i> <!-- New Post アイコン -->
+            New Post
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to favorites_user_path(current_user), class: 'nav-link' do %>
+            <i class="fas fa-heart text-white"></i> <!-- Your favorites アイコン -->
+            Your favorites
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link', data: { "turbolinks" => false } do %>
+            <i class="fas fa-sign-out-alt text-white"></i> <!-- Log out アイコン -->
+            Log out
+          <% end %>
+        </li>
+        <li class="nav-item" style="margin-left: 20px;"> <!-- 間隔を開けるためのスタイルを追加 -->
+          <div class="notification-icon d-flex align-items-center justify-content-center"> <!-- 中央揃えのためのスタイルを追加 -->
+            <%= link_to notifications_path do %>
+              <% if unchecked_notifications.any? %>
+                <i class="fas fa-bell fa-2x" style="color: yellow;"></i><!-- 未読マーク -->
+              <% else %>
+                <i class="fas fa-bell fa-2x" style="color: white;"></i> <!-- 既読マーク -->
+              <% end %>
+            <% end %>
+          </div>
         </li>
       </ul>
     <% else %>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <%= link_to "Home", posts_path, class: 'nav-link' %>
+          <%= link_to root_path, class: 'nav-link', data: { "turbolinks" => false } do %>
+            <i class="fas fa-home text-white"></i> <!-- Home アイコン -->
+            Home
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "Sign up", new_user_registration_path, class: 'nav-link' %>
+          <%= link_to new_user_registration_path, class: 'nav-link' do %>
+            <i class="fas fa-user-plus text-white"></i> <!-- Sign up アイコン -->
+            Sign up
+          <% end %>
         </li>
         <li class="nav-item">
-          <%= link_to "Log in", new_user_session_path, class: 'nav-link' %>
+          <%= link_to new_user_session_path, class: 'nav-link' do %>
+            <i class="fas fa-sign-in-alt text-white"></i> <!-- Log in アイコン -->
+            Log in
+          <% end %>
         </li>
       </ul>
     <% end %>
   </div>
 </nav>
+<%= render 'public/searches/form' %>

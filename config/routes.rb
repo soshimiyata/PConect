@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'posts/index'
+    get 'posts/show'
+    get 'posts/edit'
+  end
+  namespace :admin do
+    get 'users/index'
+    get 'users/edit'
+  end
+  namespace :admin do
+    get 'homes/top'
+  end
   # 顧客用
   devise_for :users,skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -17,21 +29,28 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get "followings" => "relationships#followings", as: "followings"
       get "followers" => "relationships#followers", as: "followers"
+      #favoriteしたユーザーを判別
+      member do
+        get :favorites
+      end
     end
+    get "search_tag"=>"posts#search_tag"
     get '/search', to: 'searches#search'
+    resources :notifications, only: [:index]
     resources :messages, only: [:create]
     resources :rooms, only: [:create,:show]
   end
 
   # 管理者用
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  devise_for :admin, skip: [:passwords] ,controllers: {
+    registrations: "admin/registrations",
     sessions: "admin/sessions"
   }
   devise_scope :admin do
     get '/admin/sign_out' => 'devise/sessions#destroy'
   end
   namespace :admin do
-    root :to => 'homes#top'
+    root to: 'homes#top'
     resources :users, only: [:index,:show,:edit,:update,:destroy]
     resources :posts, only: [:index,:show,:destroy]
   end

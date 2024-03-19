@@ -1,0 +1,22 @@
+<%= form_with model: post, local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :title, "タイトル" %><br>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.fields_for :post_images do |t| %>
+      <%= render "post_image_fields", f: t %>
+    <% end %>
+    <%= link_to_add_association "追加", f, :post_images, class: "btn btn-outline-secondary" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name, "タグ (,で区切ると複数タグ登録できます)" %><br>
+    <%= f.text_field :name, value: @tag_list, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "投稿", class: "btn btn-primary btn-block" %>
+  </div>
+<% end %>

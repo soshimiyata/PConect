@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <%= image_tag @user.get_profile_image, size: '100x100', class: "img-fluid rounded-circle mb-3" %>
+      <h2><%= @user.name %></h2>
+      <% if @user == current_user %>
+        <%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary mb-3" %>
+      <% end %>
+      <h4>introduction</h4>
+      <p><%= @user.introduction %></p>
+      <table class="table table-bordered">
+        <tbody>
+          <tr>
+            <th>Follows</th>
+            <td><%= link_to @user.followings.count, user_followings_path(@user) %></td>
+          </tr>
+          <tr>
+            <th>Followers</th>
+            <td><%= link_to @user.followers.count, user_followers_path(@user) %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <% unless @user.id == current_user.id %>
+      <% if (current_user.following? @user) && (@user.following? current_user)  %>
+        <% if @isRoom == true %>
+          <p class="user-show-room"><a href="/rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
+        <% else %>
+          <%= form_for @room do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, value: @user.id %>
+            <% end %>
+            <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+
+    <div class="col-md-8">
+      <%= render 'public/posts/index', posts: @posts %>
+    </div>
+  </div>
+</div>

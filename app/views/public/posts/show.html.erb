@@ -1,5 +1,51 @@
-<h1><%= @post.title %></h1>
-<p><%= @post.body %></p>
-<% @post.images.each do |image| %>
-  <%= image_tag image, size: "200x200" %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <div class="card mb-4"> <!-- カードタグを追加 -->
+        <div class="card-body">
+          <h1 class="text-center mb-4"><%= @post.user.name %> さんの投稿</h1> <!-- タイトルを中央揃えにし、マージンを追加 -->
+          <h3 class="text-center mb-4"><%= @post.title %></h3> <!-- タイトルを中央揃えにし、マージンを追加 -->
+          <% @post.post_images.each do |post_image| %>
+            <%= image_tag post_image.image, class: "card-img-top", alt: "Post Image", style: "max-height: 400px;" %>
+            <div class="card-body">
+              <%= post_image.text %>
+            </div>
+          <% end %>
+          <% if @post.tags.present? %>
+            <div class="d-flex justify-content-between align-items-center mb-4"> <!-- タグを横並びにし、マージンを追加 -->
+              <div>
+                <i class="fas fa-tag mr-2"></i> <!-- タグアイコンを表示 -->
+                <% @post_tags.each do |tag| %>
+                  <%= link_to tag.name, search_tag_path(tag_id: tag.id), class: "mr-2" %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+          <div class="mb-4"> <!-- ボタン間にマージンを追加 -->
+            <span id="favorite_btn_<%= @post.id %>">
+              <%= render "public/favorites/btn", post: @post %>
+            </span>
+            <span class="ml-1"> <!-- お気に入りボタンと閲覧数の間にマージンを追加 -->
+              <i class="fa-solid fa-magnifying-glass-chart"></i> <!-- アイコンと閲覧数を表示 -->
+              <%= @post.read_counts.count %>
+            </span>
+            <span class="ml-1"> <!-- 閲覧数とコメントカウンターの間にマージンを追加 -->
+              <span id="comment_counter">
+                <%= render "public/post_comments/counter", post: @post %>
+              </span>
+            </span>
+          </div>
+          <% if @post.user == current_user %>
+            <%= link_to 'Edit', edit_post_path, class: "btn btn-primary mb-4 d-block mx-auto" %>
+          <% end %>
+        </div>
+      </div>
+      <div id="comment_index" class="mt-4"> <!-- コメントとコメントフォームの間にマージンを追加 -->
+        <%= render 'public/post_comments/index', post: @post %>
+      </div>
+      <div class="mt-4"> <!-- フォームにマージンを追加 -->
+        <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %>
+      </div>
+    </div>
+  </div>
+</div>
