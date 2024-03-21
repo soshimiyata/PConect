@@ -19,9 +19,7 @@
 <!-- 上記でユーザー情報を表示すると判断された場合のみ表示 -->
     <% if show_user_info %>
       <%= link_to user_path(visitor) do %>
-          <% if visitor&.profile_image&.attached? %>
             <%= image_tag visitor.icon_image, class: 'img-fluid profile-icon' %>
-          <% end %>
           <strong><%= visitor.name %></strong>
       <% end %>
       <%= 'が' %>
