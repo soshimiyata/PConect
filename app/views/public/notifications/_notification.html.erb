@@ -4,14 +4,14 @@
 <div class="col-md-6 mx-auto">
   <div class="form-inline">
      <!--ユーザー情報を表示しない通知-->
-    <% if !%w[reply post_updated post_destroyed].include?(notification.action) %>  
-      
+    <% if !%w[reply post_updated post_destroyed].include?(notification.action) %>
+
     <% show_user_info = true %> <!-- 最初はユーザー情報を表示するとして変数を初期化 -->
       <!-- いいね通知の場合 -->
       <% if notification.action == 'like' && !notification.post %>
         <span class="text-red">
           <%= "該当する投稿が削除されています" %>
-        </span> 
+        </span>
         <% show_user_info = false %> <!-- ユーザー情報を表示しないように変数を設定 -->
       <% end %>
     <% end %>
@@ -32,7 +32,7 @@
         に<i class="fas fa-heart" style="color: red; margin-left: 5px;"></i><%= "いいねしました" %>
       <% end %>
     <% end %>
-    
+
     <!--コメント通知の場合-->
     <% case notification.action %>
     <% when 'comment' %>

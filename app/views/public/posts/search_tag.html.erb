@@ -2,8 +2,10 @@
 <h5>タグが<%=@tag.name%>の投稿一覧</h5>
 <!--タグリスト-->
 <% @tag_list.each do |list|%>
-  <%=link_to list.name,search_tag_path(tag_id: list.id) %>
-  <%="(#{list.posts.count})" %>
+  <% if list.posts.count > 0 %>
+    <%=link_to list.name,search_tag_path(tag_id: list.id) %>
+    <%="(#{list.posts.count})" %>
+  <% end %>
 <% end %>
 <%= render "public/posts/index", posts: @posts %>
 <div class="pagination pagination-sm justify-content-center">

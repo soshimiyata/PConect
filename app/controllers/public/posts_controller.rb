@@ -44,10 +44,10 @@ class Public::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    tag_list=params[:post][:name].split(',')
+    tag_list = params[:post][:name].split(',')
     if @post.update(post_params)
       @post.save_tag(tag_list)
-      redirect_to post_path(@post), notice: "投稿の編集に成功しました!"
+      redirect_to post_path(@post), notice: "投稿を更新しました!"
     else
       flash.now[:notice] = "投稿の編集に失敗しました..."
       render "edit" 
