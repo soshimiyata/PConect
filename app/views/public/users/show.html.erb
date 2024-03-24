@@ -8,6 +8,7 @@
       <% end %>
       <h4>introduction</h4>
       <p><%= @user.introduction %></p>
+      <p><%= render "public/relationships/btn", user: @user, options: { class: "follow-link" } %></p>
       <table class="table table-bordered">
         <tbody>
           <tr>
