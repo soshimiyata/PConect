@@ -9,9 +9,7 @@ class Post < ApplicationRecord
   has_many :read_counts, dependent: :destroy
   has_many :notifications, dependent: :destroy
 
-
   validates :title, presence: true
-  validates :post_images, presence: true
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)

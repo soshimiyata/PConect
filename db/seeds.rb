@@ -24,15 +24,7 @@ lucas = User.find_or_create_by!(email: "lucas@example.com") do |user|
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user3.jpg"), filename:"sample-user3.jpg")
 end
 
-Post.find_or_create_by!(shop_name: "Cavello") do |post|
-  post.post_image[0].image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename:"sample-post1.jpg")
-  post.post_image[0].text = "とても性能がいいです！"
-  post.title = "my PC"
+post1 = Post.find_or_create_by!(title: "メインPCです") do |post|
   post.user = olivia
 end
-
-PostImage.find_or_create_by!(shop_name: "和食屋せん") do |post_image|
-  post_image.image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post2.jpg"), filename:"sample-post2.jpg")
-  post_image.caption = "日本料理は美しい！"
-  post_image.user = james
-end
+PostImage.create(image: ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-post1.jpg"), filename:"sample-post1.jpg"), text:"とても性能がいいです！",post: post1)
