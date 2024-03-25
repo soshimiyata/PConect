@@ -21,6 +21,11 @@ class User < ApplicationRecord
   validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
   validates :introduction, length: {maximum: 50}
 
+  # ユーザーがactiveかどうか判定
+  def set_default_is_active
+    self.is_active ||= true
+  end
+
   # 指定したユーザーをフォローする
   def follow(user)
     active_relationships.create(followed_id: user.id)
