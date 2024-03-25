@@ -11,7 +11,7 @@ class Public::SessionsController < Devise::SessionsController
      # 【処理内容3】 取得したアカウントのパスワードと入力されたパスワードが一致していない場合、このメソッドを終了する
     return unless user.valid_password?(params[:user][:password])
      # 【処理内容4】 アクティブでない会員に対する処理
-    unless user.active?
+    unless user.is_active?
      # アカウントが無効な場合にログインを拒否し、エラーメッセージを表示
       flash[:alert] = "ログインできないユーザーです"
       redirect_to new_user_session_path and return
