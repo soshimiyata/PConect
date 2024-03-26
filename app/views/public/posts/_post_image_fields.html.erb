@@ -4,6 +4,9 @@
       <%= f.label :image, "画像" %><br>
       <%= f.file_field :image, class: "form-control-file" %>
     </div>
+    <% if f.object.image.attached? %>
+    <%= image_tag f.object.image, size: "100x100" %>
+    <% end %>
     <div class="card-body">
       <%= f.text_area :text, class: "form-control", placeholder: "写真について入力してください" %>
     </div>
