@@ -1,18 +1,2 @@
-<table class="table">
-  <tbody>
-    <% @favorite_posts.each do |post| %>
-      <tr>
-        <td>
-          <div class="d-flex align-items-center">
-            <%= link_to post_path(post) do %>
-              <%= image_tag post.post_images.first.image, size: "100x100", class: "img-thumbnail mr-2" %>
-            <% end %>
-            <div>
-              <%= link_to post.title, post_path(post), class: "text-decoration-none text-dark font-weight-bold" %>
-            </div>
-          </div>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<h2 class="mt-4 mb-4"><strong>いいねした投稿</strong></h2>
+<%= render 'public/posts/index',posts: @favorite_posts %>

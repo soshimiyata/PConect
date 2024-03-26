@@ -1,5 +1,10 @@
 @use '~bootstrap/scss/bootstrap';
 
+body {
+  background-color: black; /* 背景色を黒に設定 */
+  color: white; /* 文字色を白に設定 */
+}
+
 /* 新着商品スライドショー */
 .slider {
   width: 94%;

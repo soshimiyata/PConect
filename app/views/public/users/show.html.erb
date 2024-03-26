@@ -10,7 +10,7 @@
       <p><%= @user.introduction %></p>
       <p><%= render "public/relationships/btn", user: @user, options: { class: "follow-link" } %></p>
       <table class="table table-bordered">
-        <tbody>
+        <tbody style="color: white;">
           <tr>
             <th>Follows</th>
             <td><%= link_to @user.followings.count, user_followings_path(@user) %></td>

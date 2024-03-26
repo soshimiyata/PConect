@@ -1,19 +1,19 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <div class="card">
-        <div class="card-header bg-primary text-white">
+      <div class="card" style="background-color: #343a40;"> <!-- カードの背景色を暗いグレーに変更 -->
+        <div class="card-header" style="background-color: #777777;">
           <h2 class="text-center">Log in</h2>
         </div>
         <div class="card-body">
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
             <div class="form-group">
-              <%= f.label :email, class: "font-weight-bold" %>
+              <%= f.label :email, class: "font-weight-bold text-white" %> <!-- ラベルのテキスト色を白に変更 -->
               <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
             </div>
 
             <div class="form-group">
-              <%= f.label :password, class: "font-weight-bold" %>
+              <%= f.label :password, class: "font-weight-bold text-white" %> <!-- ラベルのテキスト色を白に変更 -->
               <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
             </div>
 
@@ -21,13 +21,13 @@
               <div class="form-group">
                 <div class="form-check">
                   <%= f.check_box :remember_me, class: "form-check-input" %>
-                  <%= f.label :remember_me, class: "form-check-label" %>
+                  <%= f.label :remember_me, class: "form-check-label text-white" %> <!-- ラベルのテキスト色を白に変更 -->
                 </div>
               </div>
             <% end %>
 
             <div class="form-group text-center">
-              <%= f.submit "Log in", class: "btn btn-success btn-block",data: {"turbolinks"=>false} %>
+              <%= f.submit "Log in", class: "btn btn-success btn-block", style: "background-color: #777777;", data: {"turbolinks"=>false} %>
             </div>
           <% end %>
 

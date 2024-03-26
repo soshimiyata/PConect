@@ -1,18 +1,20 @@
-<tbody>
-  <% post.post_comments.each do |post_comment| %>
-    <tr>
-      <td>
-        <%= link_to user_path(post_comment.user) do %>
-          <%= image_tag post_comment.user.get_profile_image, size: "50x50" %>
-          <%= post_comment.user.name %>
-        <% end %>
-      </td>
-      <td><%= post_comment.comment %></td>
-      <td class="text-end">
-        <% if post_comment.user == current_user || admin_signed_in? %>
-          <%= link_to "Destroy", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-sm btn-danger", remote: true %>
-        <% end %>
-      </td>
-    </tr>
-  <% end %>
-</tbody>
+<table>
+  <tbody>
+    <% post.post_comments.each do |post_comment| %>
+      <tr>
+        <td>
+          <%= link_to user_path(post_comment.user) do %>
+            <%= image_tag post_comment.user.get_profile_image, size: "50x50" %>
+            <%= post_comment.user.name %>
+          <% end %>
+        </td>
+        <td><%= post_comment.comment %></td>
+        <td class="text-end">
+          <% if post_comment.user == current_user || admin_signed_in? %>
+            <%= link_to "Destroy", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-sm btn-danger", remote: true %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
