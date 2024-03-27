@@ -17,7 +17,7 @@
         <%= f.file_field :profile_image, class: "form-control-file user_image", accept: 'image/*' %>
       </div>
       <% if @user.get_profile_image.attached? %>
-        <p>編集前の画像です</p>
+        <p>編集前の画像です(新しく画像を指定しない場合は編集前の画像が適用されます)</p>
         <%= image_tag @user.get_profile_image, size: "100x100" %>
       <% end %>
       <div class="form-group">
