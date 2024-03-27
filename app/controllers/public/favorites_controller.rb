@@ -4,6 +4,7 @@ class Public::FavoritesController < ApplicationController
     favorite = current_user.favorites.new(post_id: @post.id)
     favorite.save
     post = Post.find(params[:post_id])
+    # いいねの通知機能
     post.create_notification_like!(current_user)
   end
 
