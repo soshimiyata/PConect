@@ -5,6 +5,7 @@
       <%= f.file_field :image, class: "form-control-file" %>
     </div>
     <% if f.object.image.attached? %>
+    <p>編集前の画像です</p>
     <%= image_tag f.object.image, size: "100x100" %>
     <% end %>
     <div class="card-body">
