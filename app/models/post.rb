@@ -39,7 +39,8 @@ class Post < ApplicationRecord
     # old_tags.each do |old|
       # self.tags.delete　Tag.find_by(name: old)
     # end
-    
+
+    # データ軽量化のため、post_tagsからすべて消す
      self.post_tags.destroy_all
 
     # 新しいタグを保存

@@ -4,6 +4,7 @@ def create
   @post = Post.find(params[:post_id])
   @post_comment = PostComment.new(post_comment_params)
   @post_comment.user = current_user
+  # @post_comment.idを取るのでここで定義
   @post_comment.post = @post
   if @post_comment.save
     @post.create_notification_post_comment!(current_user, @post_comment.id)

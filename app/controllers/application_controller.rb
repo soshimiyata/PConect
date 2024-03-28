@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-  
+
+  # 管理者、ユーザーのログインを分岐
   def after_sign_in_path_for(resource)
     case resource
     when Admin

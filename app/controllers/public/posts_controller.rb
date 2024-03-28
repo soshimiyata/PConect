@@ -74,6 +74,7 @@ class Public::PostsController < ApplicationController
     params.require(:post).permit(:title, post_images_attributes: [:id, :text, :_destroy, :image])
   end
 
+  # 投稿が現在のユーザーによって作成されたものであるか
   def ensure_correct_user
     @post = Post.find(params[:id])
     unless @post.user == current_user
