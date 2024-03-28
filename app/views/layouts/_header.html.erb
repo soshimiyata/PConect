@@ -28,6 +28,7 @@
           <% end %>
         </li>
       </ul>
+      <!--adminがurlに含まれていて、ログインしてない場合-->
     <% elsif request.fullpath.include?("/admin") %>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
