@@ -26,6 +26,7 @@
 ## 設計書
 * ER図：https://drive.google.com/file/d/1R7TXaefMyIyLYrJ3d6FINLdfay19HzDn/view?usp=sharing
 * アプリケーション詳細設計書：https://docs.google.com/spreadsheets/d/1jBwh2IKL-aAqhJfKJ1p12LdCDOBwBTcHAV7Tdd0P5oU/edit?usp=sharing
+* 実装機能リスト：https://docs.google.com/spreadsheets/d/1TDSBMpIlna1OzLzI6DUPPZMzjdyHY5RC5hmlvCmKl_Y/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
