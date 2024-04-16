@@ -1,7 +1,7 @@
 <%= render 'index',posts: @posts %>
 <%= paginate @posts %>
 <!-- タグリスト -->
-<div class="d-flex flex-wrap">
+<div class="d-flex justify-content-center flex-wrap" style="font-size: 18px;">
   <i class="fas fa-tag mr-2"></i>
   <% @tag_list.each do |list| %>
     <!--tagが使われていなければ表示しない-->

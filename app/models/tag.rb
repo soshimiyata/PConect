@@ -3,5 +3,5 @@ class Tag < ApplicationRecord
   # タグは複数の投稿を持ちpost_tagsを通じて参照できる
   has_many :posts,through: :post_tags
 
-  validates :name, uniqueness: true, presence: true, length: { maximum: 15 }
+  validates :name, uniqueness: true, presence: true, length: { maximum: 30 }
 end

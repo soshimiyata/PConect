@@ -28,6 +28,7 @@ class Public::PostsController < ApplicationController
     @post.user_id = current_user.id
     #受け取った値を,で区切る
     tag_list = params[:post][:name].split(',')
+    #byebug
     if @post.save
       @post.save_tag(tag_list)
       redirect_to post_path(@post), notice: "投稿に成功しました!"
