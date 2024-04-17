@@ -36,7 +36,7 @@
                 <div id="favorite_btn_<%= post.id %>">
                   <%= render "public/favorites/btn", post: post %>
                 </div>
-                <%= link_to 'もっと読む', post_path(post), class: "btn btn-info btn-sm", data: { "turbolinks" => false } %>
+                <%= link_to 'もっと読む', post_path(post), class: "btn btn-info btn-sm" %>
               <% else %>
                 <span>
                   <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
