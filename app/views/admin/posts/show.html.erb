@@ -3,10 +3,10 @@
     <div class="col-md-8 offset-md-2">
       <h1><%= @post.user.name %> さんの投稿</h1>
       <h3><%= @post.title %></h3>
-      <% @post.post_images.each do |post_image| %>
+      <li><% @post.post_images.each do |post_image| %>
         <%= image_tag post_image.image, size: "200x200", class: "img-fluid mb-3" %>
         <p><%= post_image.text %></p>
-      <% end %>
+      <% end %></li>
       <div id="comment_index">
         <%= render 'public/post_comments/index', post: @post %>
       </div>
