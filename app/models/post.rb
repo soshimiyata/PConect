@@ -10,6 +10,7 @@ class Post < ApplicationRecord
   has_many :notifications, dependent: :destroy
 
   validates :title, presence: true, length: { maximum: 30 }
+  validates :post_images, presence: true
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
@@ -34,7 +35,7 @@ class Post < ApplicationRecord
     # old_tags = current_tags - sent_tags
     # 送信されてきたタグから現在存在するタグを除いたタグをnewとする
     # new_tags = sent_tags - current_tags
-  
+
     # 古いタグを消す
     # old_tags.each do |old|
       # self.tags.delete　Tag.find_by(name: old)
