@@ -4,10 +4,10 @@ ja:
       user:
         name: 名前
         introduction: 自己紹介
-        
+
       post:
         title: タイトル
-      post_images:
+      post_images: 投稿内容
         text: テキスト
         image: 画像
       post_comment:
