@@ -64,9 +64,7 @@ gem 'cocoon'
 gem 'kaminari'
 
 gem 'dotenv-rails'
-group :production do
-  gem 'pg'
-end
+gem 'pg'
 
 gem "net-smtp"
 gem "net-pop"
