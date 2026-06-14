@@ -13,6 +13,9 @@ amazon:
   access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
   secret_access_key:  <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
 
+cloudinary:
+  service: Cloudinary
+
 # Remember not to checkin your GCS keyfile to a repository
 # google:
 #   service: GCS
