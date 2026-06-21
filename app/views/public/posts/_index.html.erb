@@ -2,9 +2,9 @@
   <h2 class="mt-4 mb-4"><strong>投稿一覧</strong></h2>
   <div class="row">
     <% posts.each do |post| %>
-      <div class="col-md-4 mb-4">
-        <div class="card" style="background-color: #333333;">
-          <%= image_tag post.post_images.first.image, size: "200x200", class: "card-img-top rounded" %>
+      <div class="col-md-4 mb-4 d-flex">
+        <div class="card post-card w-100 h-100">
+          <%= image_tag post.post_images.first.image, class: "card-img-top post-image" %>
           <div class="card-body">
             <h4 class="card-title"><%= post.title %></h4>
             <% if post.tags.present? %>
