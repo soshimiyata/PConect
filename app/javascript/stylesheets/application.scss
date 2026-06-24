@@ -134,3 +134,45 @@ footer {
 .post-card:hover {
   transform: translateY(-5px);
 }
+
+.dropdown-menu {
+  background-color: #343a40;
+  border: 1px solid #495057;
+}
+
+.dropdown-menu > li > a {
+  color: white;
+}
+
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  background-color: #495057;
+  color: white;
+}
+
+.dropdown-menu .divider {
+  background-color: #6c757d;
+}
+
+.navbar .fa-bars {
+  color: white;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.search-area {
+margin-top: 20px;
+}
+
+.search-form {
+background: #fff;
+padding: 15px;
+border-radius: 10px;
+box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.search-input {
+margin-bottom: 10px;
+}

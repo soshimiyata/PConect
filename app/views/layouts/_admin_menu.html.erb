@@ -1,0 +1,20 @@
+<ul class="navbar-nav ml-auto">
+  <li class="nav-item">
+    <%= link_to admin_users_path, class: 'nav-link' do %>
+      <i class="fas fa-users text-white"></i> <!-- Users アイコン -->
+      Users
+    <% end %>
+  </li>
+  <li class="nav-item">
+    <%= link_to admin_posts_path, class: 'nav-link' do %>
+      <i class="fas fa-file-alt text-white"></i> <!-- Posts アイコン -->
+      Posts
+    <% end %>
+  </li>
+  <li class="nav-item">
+    <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link', data: { "turbolinks" => false } do %>
+      <i class="fas fa-sign-out-alt text-white"></i> <!-- Log out アイコン -->
+      Log out
+    <% end %>
+  </li>
+</ul>

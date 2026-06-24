@@ -8,107 +8,13 @@
     <% end %>
 
     <% if admin_signed_in? %>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <%= link_to admin_users_path, class: 'nav-link' do %>
-            <i class="fas fa-users text-white"></i> <!-- Users アイコン -->
-            Users
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to admin_posts_path, class: 'nav-link' do %>
-            <i class="fas fa-file-alt text-white"></i> <!-- Posts アイコン -->
-            Posts
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link', data: { "turbolinks" => false } do %>
-            <i class="fas fa-sign-out-alt text-white"></i> <!-- Log out アイコン -->
-            Log out
-          <% end %>
-        </li>
-      </ul>
-      <!--adminがurlに含まれていて、ログインしてない場合-->
-    <% elsif request.fullpath.include?("/admin") %>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <%= link_to new_admin_session_path, class: 'nav-link' do %>
-            <i class="fas fa-sign-in-alt text-white"></i> <!-- Log in アイコン -->
-            Log in
-          <% end %>
-        </li>
-      </ul>
+      <%= render 'layouts/admin_menu' %>
+    <% elsif request.fullpath.include?("/admin") %> <!--adminがurlに含まれていて、ログインしてない場合-->
+      <%= render 'layouts/admin_guest_menu' %>
     <% elsif user_signed_in? %>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <%= link_to root_path, class: 'nav-link', data: { "turbolinks" => false } do %>
-            <i class="fas fa-home text-white"></i> <!-- Home アイコン -->
-            Home
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to users_path, class: 'nav-link' do %>
-            <i class="fas fa-users text-white"></i> <!-- Users アイコン -->
-            Users
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to posts_path, class: 'nav-link' do %>
-            <i class="fas fa-file-alt text-white"></i> <!-- Posts アイコン -->
-            Posts
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to new_post_path, class: 'nav-link' do %>
-            <i class="fas fa-plus-circle text-white"></i> <!-- New Post アイコン -->
-            New Post
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to favorites_user_path(current_user), class: 'nav-link' do %>
-            <i class="fas fa-heart text-white"></i> <!-- Your favorites アイコン -->
-            Your favorites
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link', data: { "turbolinks" => false } do %>
-            <i class="fas fa-sign-out-alt text-white"></i> <!-- Log out アイコン -->
-            Log out
-          <% end %>
-        </li>
-        <li class="nav-item" style="margin-left: 20px;"> <!-- 間隔を開けるためのスタイルを追加 -->
-          <div class="notification-icon d-flex align-items-center justify-content-center"> <!-- 中央揃えのためのスタイルを追加 -->
-            <%= link_to notifications_path do %>
-              <% if unchecked_notifications.any? %>
-                <i class="fas fa-bell fa-2x" style="color: yellow;"></i><!-- 未読マーク -->
-              <% else %>
-                <i class="fas fa-bell fa-2x" style="color: white;"></i> <!-- 既読マーク -->
-              <% end %>
-            <% end %>
-          </div>
-        </li>
-      </ul>
+      <%= render 'layouts/user_menu' %>
     <% else %>
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <%= link_to root_path, class: 'nav-link', data: { "turbolinks" => false } do %>
-            <i class="fas fa-home text-white"></i> <!-- Home アイコン -->
-            Home
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to new_user_registration_path, class: 'nav-link' do %>
-            <i class="fas fa-user-plus text-white"></i> <!-- Sign up アイコン -->
-            Sign up
-          <% end %>
-        </li>
-        <li class="nav-item">
-          <%= link_to new_user_session_path, class: 'nav-link' do %>
-            <i class="fas fa-sign-in-alt text-white"></i> <!-- Log in アイコン -->
-            Log in
-          <% end %>
-        </li>
-      </ul>
+      <%= render 'layouts/guest_menu' %>
     <% end %>
   </div>
 </nav>
