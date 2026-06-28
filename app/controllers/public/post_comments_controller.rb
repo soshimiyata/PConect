@@ -10,9 +10,9 @@ class Public::PostCommentsController < ApplicationController
     @post_comment.post = @post
     if @post_comment.save
       @post.create_notification_post_comment!(current_user, @post_comment.id)
-      flash[:success] = "コメントできました!"
+      flash.now[:success] = "コメントできました!"
     else
-      flash[:error] = "コメントが失敗しました..."
+      flash.now[:error] = "コメントが失敗しました..."
     end
   end
 
