@@ -15,11 +15,9 @@
   <body>
     <%= render 'layouts/header' %>
     <main>
-      <div id="flash_message">
-        <% flash.each do |message_type, message| %>
-          <div class="flash-message <%= message_type %>"><%= message %></div>
-        <% end %>
-      </div>
+      <% flash.each do |message_type, message| %>
+        <div class="flash-message <%= message_type %>"><%= message %></div>
+      <% end %>
       <%= yield %>
     </main>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
