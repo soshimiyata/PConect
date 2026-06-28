@@ -10,9 +10,9 @@ class Public::PostCommentsController < ApplicationController
     @post_comment.post = @post
     if @post_comment.save
       @post.create_notification_post_comment!(current_user, @post_comment.id)
-      flash[:success] = "コメントできました!"
+      flash.now[:success] = "コメントできました!"
     else
-      flash[:error] = "コメントが失敗しました..."
+      flash.now[:error] = "コメントが失敗しました..."
     end
   end
 
@@ -25,6 +25,7 @@ class Public::PostCommentsController < ApplicationController
   def destroy
     PostComment.find(params[:id]).destroy
     @post = Post.find(params[:post_id])
+    flash.now[:success] = "コメントを削除しました"
     # redirect_to post_path(params[:post_id])
   end
 
