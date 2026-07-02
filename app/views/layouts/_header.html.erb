@@ -12,10 +12,10 @@
     <% elsif request.fullpath.include?("/admin") %> <!--adminがurlに含まれていて、ログインしてない場合-->
       <%= render 'layouts/admin_guest_menu' %>
     <% elsif user_signed_in? %>
+      <%= render 'public/searches/form' %>
       <%= render 'layouts/user_menu' %>
     <% else %>
       <%= render 'layouts/guest_menu' %>
     <% end %>
   </div>
 </nav>
-<%= render 'public/searches/form' %>

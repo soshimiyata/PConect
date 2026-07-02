@@ -16,17 +16,9 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
   # 検索方法分岐
-  def self.search_for(content, method)
-    if method == 'perfect'
-      Post.where(title: content)
-    elsif method == 'forward'
-      Post.where('title LIKE ?', content+'%')
-    elsif method == 'backward'
-      Post.where('title LIKE ?', '%'+content)
-    else
-      Post.where('title LIKE ?', '%'+content+'%')
-    end
-  end
+def self.search_for(content)
+  where("title LIKE ?", "%#{content}%")
+end
 
   def save_tag(sent_tags)
   # タグが存在していれば、タグの名前を配列として全て取得

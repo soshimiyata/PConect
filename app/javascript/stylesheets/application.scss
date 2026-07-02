@@ -162,17 +162,37 @@ footer {
   display: none;
 }
 
-.search-area {
-margin-top: 20px;
-}
-
 .search-form {
-background: #fff;
-padding: 15px;
-border-radius: 10px;
-box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
 }
 
 .search-input {
-margin-bottom: 10px;
+  background-color: #343a40;
+  border: 1px solid #6c757d;
+  color: #fff;
+}
+
+.search-input::placeholder {
+  color: white;
+  opacity: 1;
+}
+
+.search-input:focus {
+  background-color: #343a40;
+  color: #fff;
+  border-color: #0d6efd;
+}
+
+.search-btn {
+  background-color: #495057;
+  border-color: #495057;
+  color: #fff;
+}
+
+.search-btn:hover {
+  background-color: #5c636a;
+  border-color: #5c636a;
+  color: #fff;
 }
