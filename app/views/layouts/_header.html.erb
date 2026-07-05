@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="height: 70px;"> <!-- ヘッダーの高さを70pxに設定 -->
-  <div class="container">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark"> <!-- ヘッダーの高さを70pxに設定 -->
+  <div class="container" style="height: 70px;">
     <% if user_signed_in? %>
     <h1><i class="fa-solid fa-desktop text-white"></i><%= link_to "PConect", root_path, style: 'color: white;', data: { "turbolinks" => false } %></h1>
     <% elsif request.fullpath.include?("/admin") %>
@@ -12,7 +12,13 @@
     <% elsif request.fullpath.include?("/admin") %> <!--adminがurlに含まれていて、ログインしてない場合-->
       <%= render 'layouts/admin_guest_menu' %>
     <% elsif user_signed_in? %>
-      <%= render 'public/searches/form' %>
+      <div class="header-search">
+        <div class="row ml-4 justify-content-center search-area">
+          <div class="col-md-14">
+            <%= render 'public/searches/form' %>
+          </div>
+        </div>
+      </div>
       <%= render 'layouts/user_menu' %>
     <% else %>
       <%= render 'layouts/guest_menu' %>

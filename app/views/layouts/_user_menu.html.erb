@@ -20,6 +20,10 @@
       <i class="fas fa-bars fa-lg"></i>
     </a>
     <ul class="dropdown-menu dropdown-menu-right">
+      <li class="dropdown-search">   <!-- スマホ用検索 -->
+        <%= render 'public/searches/form' %>
+      </li>
+      <li role="separator" class="divider dropdown-search"></li>
       <li>
         <%= link_to root_path, class: 'nav-link', data: { "turbolinks" => false } do %>
           <i class="fas fa-home"></i>

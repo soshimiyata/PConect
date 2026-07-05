@@ -36,7 +36,7 @@ body {
 /* 新着商品リスト装飾 */
 /* 各スライドの背景色を設定し、余白と角丸を追加して装飾する */
 .slider li {
-  // background-color: #C0C0C0;
+  background-color: #242424;
   padding: 10px; /* スライドの内側の余白を追加 */
   border-radius: 10px; /* スライドの角を丸くします */
   // box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* スライドに影を追加して立体感を出す */
@@ -52,7 +52,7 @@ body {
 .slider li p.caption {
   font-family: 'Sawarabi Mincho', sans-serif;
   font-size: 16px;
-  color: #0000FF;
+  color: #007bff;
   font-weight: bold;
 }
 
@@ -105,13 +105,13 @@ body {
   height: 12px;
   display: block;
   border-radius: 50%;
-  background: #C0C0C0; /* ドットの背景色を薄いピンクに設定 */
+  background: #e6e6e6; /* ドットの背景色を薄いピンクに設定 */
   border: none;
 }
 
 /* アクティブなドットのスタイルを設定 */
 .slick-dots .slick-active button {
-  background: #0000FF; /* アクティブなドットの背景色を濃いピンクに設定 */
+  background: #007bff; /* アクティブなドットの背景色を濃いピンクに設定 */
 }
 
 footer {
@@ -195,4 +195,43 @@ footer {
   background-color: #5c636a;
   border-color: #5c636a;
   color: #fff;
+}
+
+.navbar-nav {
+  flex-direction: row;
+}
+
+.navbar-nav .nav-link {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+/* デフォルトではハンバーガー内検索を隠す */
+.dropdown-search {
+  display: none;
+}
+
+.navbar .dropdown-menu {
+  margin-top: 26px;   /* ヘッダーから少し離す */
+  position: absolute; /* ドロップダウンメニューを絶対位置に設定 */
+  z-index: 9999;      /* スライダーより前面に */
+}
+
+@media (max-width: 768px) {
+  /* ヘッダーの検索バーを非表示 */
+  .header-search {
+    display: none;
+  }
+  /* ハンバーガー内検索を表示 */
+  .navbar .dropdown-search {
+    display: block;
+  }
+
+  .dropdown-search .search-btn {
+    display: none;
+  }
+
+  .navbar .dropdown-search .search-input {
+    border-radius: 0;
+  }
 }
