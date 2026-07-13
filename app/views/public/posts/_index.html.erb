@@ -4,7 +4,9 @@
     <% posts.each do |post| %>
       <div class="col-md-4 mb-4 d-flex">
         <div class="card post-card w-100 h-100">
-          <%= image_tag post.post_images.first.image, class: "card-img-top post-image" %>
+          <%= link_to post_path(post) do %>
+            <%= image_tag post.post_images.first.image, class: "card-img-top post-image" %>
+          <% end %>
           <div class="card-body">
             <h4 class="card-title"><%= post.title %></h4>
             <% if post.tags.present? %>
@@ -36,7 +38,6 @@
                 <div id="favorite_btn_<%= post.id %>">
                   <%= render "public/favorites/btn", post: post %>
                 </div>
-                <%= link_to 'もっと読む', post_path(post), class: "btn btn-info btn-sm" %>
               <% else %>
                 <span>
                   <i class="fas fa-heart" aria-hidden="true" style="color: red;"></i>
