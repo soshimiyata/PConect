@@ -1,5 +1,15 @@
-<h1><%= @post.title %>の編集</h1>
-<%= render 'layouts/errors', obj: @post %>
-<%= render 'form', post: @post %>
-<td><%= link_to '投稿を削除', @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></td>
-<%= link_to '戻る', posts_path, class: "back" %>
+<div class="container my-5">
+  <div class="post-form-wrapper">
+    <h1 class="mb-4"><%= @post.title %>の編集</h1>
+    <%= render 'layouts/errors', obj: @post %>
+    <%= render 'form', post: @post %>
+    <div class="d-flex justify-content-between mt-4">
+      <%= link_to '投稿を削除',
+          @post,
+          method: :delete,
+          data: { confirm: '本当に消しますか？' },
+          class: "btn btn-danger" %>
+      <%= link_to '戻る', posts_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,7 @@
-<h1>新規投稿</h1>
-<%= render 'layouts/errors', obj: @post %>
-<%= render 'form', post: @post %>
+<div class="container my-5">
+  <div class="post-form-wrapper">
+    <h1 class="mb-4">新規投稿</h1>
+    <%= render 'layouts/errors', obj: @post %>
+    <%= render 'form', post: @post %>
+  </div>
+</div>

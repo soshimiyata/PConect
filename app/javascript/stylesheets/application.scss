@@ -235,3 +235,15 @@ footer {
     border-radius: 0;
   }
 }
+
+.post-form-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+@media (max-width: 768px) {
+  .post-form-wrapper {
+    padding: 20px;
+  }
+}

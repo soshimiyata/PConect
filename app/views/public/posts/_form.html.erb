@@ -1,22 +1,37 @@
-<%= form_with model: post, local: true do |f| %>
-  <div class="form-group">
-    <%= f.label :title, "タイトル" %><br>
-    <%= f.text_field :title, class: "form-control" %>
-  </div>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <div class="post-form-wrapper">
 
-  <div class="form-group">
-    <%= f.fields_for :post_images do |t| %>
-      <%= render "post_image_fields", f: t %>
-    <% end %>
-    <%= link_to_add_association "追加", f, :post_images, class: "btn btn-outline-secondary" %>
-  </div>
+        <%= form_with model: post, local: true do |f| %>
 
-  <div class="form-group">
-    <%= f.label :name, "タグ (,で区切ると複数タグ登録できます)" %><br>
-    <%= f.text_field :name, maxlength: 29, value: @tag_list, class: "form-control" %>
-  </div>
+          <div class="form-group mb-4">
+            <%= f.label :title, "タイトル" %>
+            <%= f.text_field :title, class: "form-control" %>
+          </div>
 
-  <div class="form-group">
-    <%= f.submit '投稿', class: "btn btn-primary btn-block" %>
+          <div class="form-group mb-4">
+            <%= f.fields_for :post_images do |t| %>
+              <%= render "post_image_fields", f: t %>
+            <% end %>
+
+            <%= link_to_add_association "画像を追加", f, :post_images,
+                  class: "btn btn-outline-secondary mt-3" %>
+          </div>
+
+          <div class="form-group mb-4">
+            <%= f.label :name, "タグ（,で区切ると複数タグ登録できます）" %>
+            <%= f.text_field :name,
+                  value: @tag_list,
+                  maxlength: 29,
+                  class: "form-control" %>
+          </div>
+
+          <%= f.submit "投稿", class: "btn btn-primary btn-block" %>
+
+        <% end %>
+
+      </div>
+    </div>
   </div>
-<% end %>
+</div>
