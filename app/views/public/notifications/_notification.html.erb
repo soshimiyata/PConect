@@ -27,7 +27,7 @@
  <!--いいね通知の場合-->
     <% case notification.action %>
     <% when 'like' %>
-      <% if notification.post %>
+      <% if notification.post and notification.post.user_id == notification.visited_id %>
         <%= link_to "あなたの投稿: #{notification.post.title}", notification.post, style: "font-weight: bold;" %>
         に<i class="fas fa-heart" style="color: red; margin-left: 5px;"></i><%= "いいねしました" %>
       <% end %>
@@ -36,16 +36,16 @@
     <!--コメント通知の場合-->
     <% case notification.action %>
     <% when 'comment' %>
-      <% if notification.post %>
+      <% if notification.post and notification.post.user_id == notification.visited_id %>
         <%= link_to "あなたの投稿: #{notification.post.title}", notification.post, style: "font-weight: bold;" %>
-        にコメントが追加されました
+        にコメントを追加しました
       <% end %>
     <% end %>
     <!--フォロー通知の場合-->
     <% case notification.action %>
     <% when 'follow' %>
       <% if notification.visited %>
-        <%= link_to "#{notification.visited.name}", user_path(notification.visited), style: "font-weight: bold;" %>
+        <%= link_to "あなた", user_path(notification.visited), style: "font-weight: bold;" %>
         をフォローしました
       <% end %>
     <% end %>
